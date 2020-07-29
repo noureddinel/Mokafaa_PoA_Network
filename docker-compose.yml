@@ -2,7 +2,7 @@ version: "2"
 services:
 #--------------------------------- Bootstarp
   bootstrap:
-    build: monitored-geth-client
+    build: ./monitored-geth-client
     restart: on-failure
     container_name: bootstrap
     hostname: bootstrap
@@ -17,7 +17,7 @@ services:
 
 #--------------------------------- M1
   eth-miner1:
-    build: monitored-geth-client
+    build: ./monitored-geth-client
     restart: on-failure
     links:
       - bootstrap
@@ -29,7 +29,7 @@ services:
 
 #--------------------------------- M2
   eth-miner2:
-    build: monitored-geth-client
+    build: ./monitored-geth-client
     restart: on-failure
     links:
       - bootstrap
@@ -41,7 +41,7 @@ services:
 
 #--------------------------------- M3
   eth-miner3:
-    build: monitored-geth-client
+    build: ./monitored-geth-client
     restart: on-failure
     container_name: eth-miner3
     links:
@@ -54,7 +54,7 @@ services:
 
 #--------------------------------- Net Stats
   netstats:
-    build: eth-netstats
+    build: ./eth-netstats
     restart: on-failure
     container_name: netstats
     environment:
